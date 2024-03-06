@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block title %}Edit Data{% endblock %}
+{% block content %}
+<div class="flex justify-center">
+  <form action="/update/{{id}}" class="w-full max-w-md">
+      <div class="mb-4">
+          <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Todo Title</label>
+          <input type="text" id="title" name="title" value="{{title}}"
+              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500">
+      </div>
+      <div class="mb-4">
+          <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Todo Description</label>
+          <textarea id="description" name="description" rows="3"
+              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500">{{description}}</textarea>
+      </div>
+      <div class="mb-4">
+          <label for="priority" class="block text-gray-700 text-sm font-bold mb-2">Todo Priority</label>
+          <input type="number" id="priority" name="priority" value="{{priority}}"
+              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500">
+      </div>
+      <button type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Update
+      </button>
+  </form>
+</div>
+
+{% endblock %}

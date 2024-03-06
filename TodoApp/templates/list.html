@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block title %}All Todo's{% endblock %}
+{% block content %}
+{% for eachtodo in documents %}
+
+<div class=" flex items-center justify-center">
+  <div class="md:w-1/2 p-6 ">
+      <div class="bg-white border rounded shadow-md">
+          <div class="p-6">
+              <h5 class="text-xl font-bold mb-2">Title : {{ eachtodo.title }} {{ eachtodo.priority }}</h5>
+              <p class="text-gray-700 mb-4">Description :{{ eachtodo.description }}</p>
+              <!--p class="text-gray-500">{{ eachtodo.created_at }}</p-->
+             
+              <a href="/delete/{{ eachtodo.id }}" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Delete</a>
+              <a href="/edit/{{ eachtodo.id }}" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 ml-2">Edit</a>
+              <a href="/valider/{{ eachtodo.id }}" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">valider</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,84 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% load compress %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CACHE/css/output.51a15217ff1c.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  {% compress css %}
+  <link rel="stylesheet"
+      href="{% static 'src/output.css' %}">
+  {% endcompress %}
+  <script src= 
+  "https://cdn.tailwindcss.com"> 
+      </script> 
+  <!--link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"-->
+  <title>{% block title %}Todo App{% endblock %}</title>
+</head>
+
+<body>
+
+<nav class="flex flex-wrap items-center justify-between bg-gray-200 p-4 ">
+  <i class="fas fa-list text-gray-500 dark:text-gray-400 ml-56"></i>
+  <a href="#" id="todoApp" class="text-white text-lg font-bold ">Todo App</a>
+  <div class="flex items-center space-x-4 mr-56">
+      <a href="/" class="text-gray-900 hover:text-gray-100 transition duration-300 ease-in-out rounded-full px-4 py-2 border border-gray-100 hover:border-gray-700 hover:bg-gray-700 shadow-md hover:shadow-xl hover:shadow-gray-500">Add</a>
+      <a href="{% url 'list' %}" class="text-gray-900 hover:text-gray-100 transition duration-300 ease-in-out rounded-full px-4 py-2 border border-gray-100 hover:border-gray-700 hover:bg-gray-700 shadow-md hover:shadow-xl hover:shadow-gray-500">List All Todo</a>
+      <a href="{% url 'sortdata' %}" class="text-gray-900 hover:text-gray-100 transition duration-300 ease-in-out rounded-full px-4 py-2 border border-gray-100 hover:border-gray-700 hover:bg-gray-700 shadow-md hover:shadow-xl hover:shadow-gray-500">Sort By Priority</a>
+      <a href="{% url 'tacheValider' %}" class="text-gray-900 hover:text-gray-100 transition duration-300 ease-in-out rounded-full px-4 py-2 border border-gray-100 hover:border-gray-700 hover:bg-gray-700 shadow-md hover:shadow-xl hover:shadow-gray-500">Les taches valider</a>
+  </div>
+</nav>
+
+
+  {% block content %}
+
+ 
+
+  <form class="max-w-md mx-auto pt-5" action="{% url 'searchdata' %}">   
+    <label for="query" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search By Title</label>
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input type="search" name="query" id="query" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+    </div>
+</form>
+
+<div class='relative'>
+  <input type='text' id='name' class='block w-72 py-2.3 px-0 text-sm text-white bg-transparent border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600' />
+  <label for='name' class='absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:translate-y-6'>Your Name</label>
+</div>
+
+  
+<div class="container mx-auto">
+  <div class="md:w-1/2 mx-auto">
+      <form action="{% url 'submit' %}">
+          <div class="mb-4">
+              <label for="title" class="block text-sm font-medium text-gray-600">Todo Title</label>
+              <input type="text" id="title" name="title" class="form-input mt-1 p-2 w-full rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-300">
+          </div>
+          <div class="mb-4">
+              <label for="description" class="block text-sm font-medium text-gray-600">Todo Description</label>
+              <textarea id="description" name="description" rows="3" class="form-input mt-1 p-2 w-full rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-300"></textarea>
+          </div>
+          <div class="mb-4">
+              <label for="priority" class="block text-sm font-medium text-gray-600">Todo Priority</label>
+              <input type="number" id="priority" name="priority" class="form-input mt-1 p-2 w-full rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-300">
+          </div>
+          <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">Add</button>
+      </form>
+  </div>
+</div>
+  {% endblock %}
+
+</body>
+</html>
